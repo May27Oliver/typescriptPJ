@@ -19,7 +19,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true,//調用json資料
     "isolatedModules": true,
     "noEmit": true
   },
