@@ -2,7 +2,8 @@ import React from 'react';//沒有這行會錯
 import logo from './assets/images/logo.svg';
 import styles from './App.module.css';
 import robots from './mockdata/robots.json';
-import Robot from './components/Robot'
+import Robot from './components/Robot';
+import ShoppingCart from './components/ShoppingCart';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           Oliver機器人精品專賣店
         </h1>
       </div>
+      <ShoppingCart/>
       <div className={styles.robotList}>
         {robots.map( item => <Robot key={item.id} id={item.id} name={item.name} email={item.email}/>)}
       </div>
