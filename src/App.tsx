@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import React from 'react';//沒有這行會錯
-import './App.css';
+import styles from "./App.css"
 
 const App = () => {
   return (
