@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ShoppingCart.module.css';
+import { FiShoppingCart } from "react-icons/fi";
 interface Props {//傳入狀態
 
 }
@@ -15,7 +16,7 @@ class ShoppingCart extends React.Component<Props,State> {
             isOpen:false,
         }
     }
-    handleShowList = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{//將onClick的類型
+    handleShowList = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{//將下面onClick的event資料型態寫進這裡的e後面
         this.setState({
             isOpen:this.state.isOpen?false:true,
         })
@@ -25,7 +26,9 @@ class ShoppingCart extends React.Component<Props,State> {
             <div className={styles.cardContainer}>
                 <button className={styles.button} 
                 onClick={this.handleShowList}
-                >購物車 2（件）</button>
+                >
+                    <FiShoppingCart/>
+                    <span>購物車 2（件）</span></button>
                 {this.state.isOpen?<div className={styles.cartDropDown}>
                     <ul>
                         <li>robot 1</li>
