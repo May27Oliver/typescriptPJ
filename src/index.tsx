@@ -1,12 +1,19 @@
-import React from 'react';
+import React,{createContext} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './robot-gallery/App';
 import reportWebVitals from './reportWebVitals';
+const myLove = {
+  username:"米米"
+};
+
+export const myContext = createContext(myLove);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <myContext.Provider value={myLove}>
+      <App/>
+    </myContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

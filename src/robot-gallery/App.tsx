@@ -5,18 +5,32 @@ import robots from './mockdata/robots.json';
 import Robot from './components/Robot';
 import ShoppingCart from './components/ShoppingCart';
 
-interface Props {}
+interface Props {
+}
 
 interface State {
   robotGallery: any[]
 }
+
+//loading狀態添加
 const App:React.FC<Props> = (props) =>{
   const [count,setCount] = useState<number>(0);
   const [robotGallery,setRobotGallery] = useState<any>([]);
+  const [loading,setLoading]= useState<boolean>(false);
+  const [error,setError] = useState<string>('');
+  const fetchData = async()=>{
+    setLoading(true);//loading畫面出現
+    try{
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      const data = await res.json();
+      setRobotGallery(data);
+    }catch(e){
+      setError(e.message);
+    }
+    setLoading(false);//loading畫面結束
+  }
   useEffect(()=>{
-    fetch("https://jsonplaceholder.typicode.com/users")
-    .then(res=>res.json())
-    .then(data=>{setRobotGallery(data)})
+    fetchData();
   },[]);
   return (
     <div className={styles.app}>
@@ -27,10 +41,13 @@ const App:React.FC<Props> = (props) =>{
         </h1>
       </div>
       <ShoppingCart/>
-      <div className={styles.robotList}>
-        {console.log('robotGallery',robotGallery)}
-        {robotGallery.map( item => <Robot key={item.id} id={item.id} name={item.name} email={item.email}/>)}
-      </div>
+      {!error||error!=="" && <div>{error}</div>}
+      {
+        loading?<h2>loading...</h2>:
+        <div className={styles.robotList}>
+          {robotGallery.map( item => <Robot key={item.id} id={item.id} name={item.name} email={item.email}/>)}
+        </div>
+      }
     </div>
   );
 }
