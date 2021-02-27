@@ -3,17 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './robot-gallery/App';
 import reportWebVitals from './reportWebVitals';
-const myLove = {
-  username:"米米"
-};
+import AppStateProvider,{myContext} from './AppState';
 
-export const myContext = createContext(myLove);
 
 ReactDOM.render(
   <React.StrictMode>
-    <myContext.Provider value={myLove}>
+    <AppStateProvider>
       <App/>
-    </myContext.Provider>
+    </AppStateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
