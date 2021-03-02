@@ -12,7 +12,6 @@ interface State {//組件狀態
 
 const ShoppingCart:React.FC = (props) => {
     const value = useContext(myContext);
-    console.log('val',value);
     const [open,setOpen] = useState(false);
     const handleShowList = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{//將下面onClick的event資料型態寫進這裡的e後面
         setOpen(open?false:true);

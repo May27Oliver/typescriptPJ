@@ -11,15 +11,15 @@ const myLove:AppStateValue = {
 };
 
 export const myContext = createContext(myLove);
-export const appSetStateContext = React.createContext<React.Dispatch<React.SetStateAction<AppStateValue>> | undefined>(undefined);
+export const mySetStateContext = React.createContext<React.Dispatch<React.SetStateAction<AppStateValue>> | undefined>(undefined);
 
 const AppStateProvider:React.FC = (props) => {
     const [state,setState] = useState(myLove);
     return (
     <myContext.Provider value={state}>
-        <appSetStateContext.Provider value={setState}>
+        <mySetStateContext.Provider value={setState}>
             {props.children}
-        </appSetStateContext.Provider>
+        </mySetStateContext.Provider>
     </myContext.Provider>)
 }
 
